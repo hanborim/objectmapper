@@ -1,0 +1,37 @@
+오브젝트 맵퍼
+- 그레이들로 프로젝트 생성
+- 그레이들 라이브러리 :2. Jackson Databind 
+- // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+- implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.0'
+
+
+‘-asList: 리턴시 새로운 어레이리스트 반환시켜줌
+List<Car> carList = Arrays.asList(car1,car2);
+ @SafeVarargs
+    @SuppressWarnings("varargs")
+    public static <T> List<T> asList(T... a) {
+        return new ArrayList<>(a);
+    }
+
+‘-object mapper란 텍스트 형태의 JSON을 object로 변경해 주거나 object를 텍스트 형태의 JSON으로 변경해 주는 것을 의미한다. 예를 들면 컨트롤러에 요청이 오면 JSON을 object로 변경을 했고, 응답으로 보내면 자동으로 object를 json으로 변경했다.
+
+Controller 외에 내가 따로 작업을 하거나, 객체를 JSON으로 바꿔야한다면, 위와 같이 var objectMapper를 생성해서 writeValueAsString이나 readValue를 활용하여 JSON <-> object 간의 변환이 가능하다. 이 외의 objectMapper에 추가하는 방식도 있다는 점을 이해하자.
+
+
+‘-제이슨 포맷 이쁘게 
+https://jsonformatter.curiousconcept.com/
+
+‘-카멜케이스
+@JsonProperty("TYPE")
+@JsonProperty("car_number")
+
+
+
+
+
+‘-
+JSON을 자바 객체로
+
+다음은 ObjectMapper 클래스를 사용하여 JSON 문자열을 Java 객체로 변환하는 간단한 예입니다 .
+String json = "{ \"color\" : \"Black\", \"type\" : \"BMW\" }";
+Car car = objectMapper.readValue(json, Car.class);	
